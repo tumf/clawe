@@ -45,8 +45,13 @@ if [ ! -f "$CONFIG_FILE" ]; then
     echo "==> Patching config with agent setup..."
     export OPENCLAW_PORT="${PORT}"
     export CONVEX_URL="${CONVEX_URL:-}"
-    
-    envsubst '$OPENCLAW_PORT $OPENCLAW_TOKEN $CONVEX_URL' < "$TEMPLATES_DIR/config.template.json" > "$CONFIG_FILE"
+
+    # Model selection (default stays Claude Sonnet)
+    export CLAWE_MODEL="${CLAWE_MODEL:-anthropic/claude-sonnet-4-20250514}"
+    export ZAI_API_KEY="${ZAI_API_KEY:-}"
+    export ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY:-}"
+
+    envsubst '$OPENCLAW_PORT $OPENCLAW_TOKEN $CONVEX_URL $CLAWE_MODEL $ZAI_API_KEY $ANTHROPIC_API_KEY' < "$TEMPLATES_DIR/config.template.json" > "$CONFIG_FILE"
     
     echo "==> Setup complete."
 else

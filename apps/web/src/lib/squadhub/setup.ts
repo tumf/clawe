@@ -160,7 +160,8 @@ async function setupCrons(connection: SquadhubConnection): Promise<{
       payload: {
         kind: "agentTurn",
         message: HEARTBEAT_MESSAGE,
-        model: "anthropic/claude-sonnet-4-20250514",
+        model:
+          process.env.CLAWE_MODEL ?? "anthropic/claude-sonnet-4-20250514",
         timeoutSeconds: 600,
       },
       delivery: { mode: "none" },

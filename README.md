@@ -281,9 +281,11 @@ pnpm convex:deploy
 
 ## Environment Variables
 
-| Variable            | Required | Description                       |
-| ------------------- | -------- | --------------------------------- |
-| `ANTHROPIC_API_KEY` | Yes      | Anthropic API key for Claude      |
-| `SQUADHUB_TOKEN`    | Yes      | Auth token for squadhub gateway   |
-| `CONVEX_URL`        | Yes      | Convex deployment URL             |
-| `OPENAI_API_KEY`    | No       | OpenAI key (for image generation) |
+| Variable            | Required | Description                                       |
+| ------------------- | -------- | ------------------------------------------------- |
+| `ANTHROPIC_API_KEY` | No*      | Anthropic API key for Claude (if using Claude)    |
+| `ZAI_API_KEY`       | No*      | Z.AI API key (if using GLM-5)                     |
+| `CLAWE_MODEL`       | No       | Default model id (e.g. `anthropic/...` or `zai/...`) |
+| `SQUADHUB_TOKEN`    | Yes      | Auth token for squadhub gateway                   |
+| `CONVEX_URL`        | Yes      | Convex deployment URL                             |
+| `OPENAI_API_KEY`    | No       | OpenAI key (for image generation)                 |

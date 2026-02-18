@@ -2,11 +2,25 @@
   "env": {
     "CONVEX_URL": "${CONVEX_URL}"
   },
-  "auth": {
-    "profiles": {
-      "anthropic:default": {
-        "provider": "anthropic",
-        "mode": "token"
+  "models": {
+    "providers": {
+      "anthropic": {
+        "apiKey": "${ANTHROPIC_API_KEY}"
+      },
+      "zai": {
+        "baseUrl": "https://api.z.ai/api/paas/v4",
+        "apiKey": "${ZAI_API_KEY}",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "glm-5",
+            "name": "GLM-5",
+            "reasoning": true,
+            "input": ["text"],
+            "contextWindow": 128000,
+            "maxTokens": 4096
+          }
+        ]
       }
     }
   },
@@ -19,6 +33,9 @@
       "maxConcurrent": 4,
       "subagents": {
         "maxConcurrent": 8
+      },
+      "model": {
+        "primary": "${CLAWE_MODEL}"
       }
     },
     "list": [
@@ -36,7 +53,7 @@
         "id": "inky",
         "name": "Inky",
         "workspace": "/data/workspace-inky",
-        "model": "anthropic/claude-sonnet-4-20250514",
+        "model": "${CLAWE_MODEL}",
         "identity": {
           "name": "Inky",
           "emoji": "✍️"
@@ -46,7 +63,7 @@
         "id": "pixel",
         "name": "Pixel",
         "workspace": "/data/workspace-pixel",
-        "model": "anthropic/claude-sonnet-4-20250514",
+        "model": "${CLAWE_MODEL}",
         "identity": {
           "name": "Pixel",
           "emoji": "🎨"
@@ -56,7 +73,7 @@
         "id": "scout",
         "name": "Scout",
         "workspace": "/data/workspace-scout",
-        "model": "anthropic/claude-sonnet-4-20250514",
+        "model": "${CLAWE_MODEL}",
         "identity": {
           "name": "Scout",
           "emoji": "🔍"
