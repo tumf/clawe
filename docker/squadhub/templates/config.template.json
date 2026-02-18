@@ -5,7 +5,18 @@
   "models": {
     "providers": {
       "anthropic": {
-        "apiKey": "${ANTHROPIC_API_KEY}"
+        "baseUrl": "https://api.anthropic.com",
+        "apiKey": "${ANTHROPIC_API_KEY}",
+        "models": [
+          {
+            "id": "claude-sonnet-4-20250514",
+            "name": "Claude Sonnet 4",
+            "reasoning": true,
+            "input": ["text", "image"],
+            "contextWindow": 200000,
+            "maxTokens": 64000
+          }
+        ]
       },
       "zai": {
         "baseUrl": "https://api.z.ai/api/paas/v4",
